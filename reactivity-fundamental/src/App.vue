@@ -18,7 +18,7 @@
         <button class="product__btn-add" type="submit">+ Add</button>
       </form>
       <ul class="list-products">
-        <li v-for="(item, i) in list" :key="i" class="list-products__item">
+        <li v-for="(item, i) in list" :key="item.id" class="list-products__item">
           <span> {{ i + 1 }}) </span>
           {{ item.name }}
           <div :class="['circle', { important: item.important }]"></div>
