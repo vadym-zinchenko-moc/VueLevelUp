@@ -1,23 +1,23 @@
 <template>
-    <div class="films-table--container">
+    <div class="films">
         <table class="films-table">
-            <caption class="table-title">
+            <caption class="table__title">
                 Film list
             </caption>
             <thead class="table-header">
                 <tr class="table-header__items">
-                    <th class="item">№</th>
-                    <th class="item">Name</th>
-                    <th class="item">Year</th>
-                    <th class="item">Country</th>
+                    <th class="header__item">Name</th>
+                    <th class="header__item">№</th>
+                    <th class="header__item">Year</th>
+                    <th class="header__item">Country</th>
                 </tr>
             </thead>
-            <tbody class="table-body__items">
-                <tr v-for="(film, i) in films" :key="i" ref="items">
-                    <td class="item">{{ i + 1 }})</td>
-                    <td class="item">{{ film.Title }}</td>
-                    <td :class="['item', { oldFilm: film.Year < 2000 }]">{{ film.Year }}</td>
-                    <td :class="['item', {canadaFilm: film.Country === 'Canada'}]">{{ film.Country }}</td>
+            <tbody class="table-body">
+                <tr v-for="(film, i) in films" :key="i" ref="table-body__items">
+                    <td class="body__item">{{ i + 1 }})</td>
+                    <td class="body__item">{{ film.Title }}</td>
+                    <td :class="['body__item', { 'old-film': film.Year < 2000 }]">{{ film.Year }}</td>
+                    <td :class="['body__item', { 'canada-film': film.Country === 'Canada'}]">{{ film.Country }}</td>
                 </tr>
             </tbody>
         </table>
@@ -29,11 +29,9 @@ import films from "./data.js";
 
 export default {
     name: "App",
-    data() {
-        return {
-            films: films,
-        };
-    },
+    data: () => ({
+        films: films,
+    }),
     mounted() {
         console.log(this.$refs.items[0])
     }
@@ -46,7 +44,7 @@ export default {
     padding: 0;
 }
 
-.films-table--container {
+.films {
     display: flex;
     justify-content: center;
 }
@@ -56,38 +54,34 @@ export default {
     margin: 20px;
 }
 
-.table-title {
+.table__title {
     font-size: 42px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-.table-header__items {
+.table-header__items, .table-body__items {
     border: 1px solid gray;
 }
 
-.table-header__items .item {
+.header__item {
     color: gray;
     font-size: 22px;
     border: 1px solid gray;
     padding: 5px 10px;
 }
 
-.table-body__items {
-    border: 1px solid gray;
-}
-
-.table-body__items .item {
+.body__item {
     font-size: 22px;
     border: 1px solid gray;
     padding: 5px 10px;
 }
 
-.oldFilm {
-    color: red;
+.old-film {
+    color: #FF0000;
 }
 
-.canadaFilm {
+.canada-film {
     background-color: blanchedalmond;
 }
 </style>
