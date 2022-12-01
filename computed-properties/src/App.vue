@@ -9,7 +9,7 @@
         </form>
         <h1 class="films__title">Films list</h1>
         <ul class="films-list">
-            <li class="films-list__item" v-for="film in sortFilms" :key="film.Title">
+            <li class="films-list__item" v-for="film in sortFilms" :key="film.id">
                 {{ film.Title }} {{ film.Year }}
             </li>
         </ul>
