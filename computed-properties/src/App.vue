@@ -2,18 +2,20 @@
     <div class="films">
         <form @submit.prevent="addFilm" class="add-film-form">
             <label>Name</label>
-            <input v-model="filmName" class="add-film-form__input-name" />
+            <input v-model="filmData.filmName" class="add-film-form__input-name" />
             <label>Year</label>
-            <input v-model="yearFilm" class="add-film-form__input-year" />
+            <input v-model="filmData.yearFilm" class="add-film-form__input-year" />
             <button type="submit">Add film</button>
         </form>
         <h1 class="films__title">Films list</h1>
         <ul class="films-list">
-            <li class="films-list__item" v-for="film in sortFilms" :key="film.id">
+            <li class="films-list__item" v-for="film in sortedFilms" :key="film.id">
                 {{ film.Title }} {{ film.Year }}
             </li>
         </ul>
-        <div class="films-count">Count films: {{ filmsCount }}</div>
+        <div class="films__count">
+            <p>Count films: {{ filmsCount }}</p>
+        </div>
     </div>
 </template>
 
@@ -24,25 +26,27 @@ export default {
     name: "App",
     data: () => ({
         films,
-        filmName: "",
-        yearFilm: "",
+        filmData: {
+            filmName: "",
+            yearFilm: "",
+        }
     }),
     methods: {
         addFilm() {
             this.films.push({
-                Title: this.filmName,
-                Year: this.yearFilm,
+                Title: this.filmData.filmName,
+                Year: this.filmData.yearFilm,
                 id: this.films.length + 1,
             });
-            this.filmName = "";
-            this.yearFilm = "";
+            this.filmData.filmName = "";
+            this.filmData.yearFilm = "";
         },
     },
     computed: {
         filmsCount() {
-            return [...this.films].length;
+            return this.films.length;
         },
-        sortFilms() {
+        sortedFilms() {
             return [...this.films].sort((a, b) => {
                 return Number(b.Year) - Number(a.Year);
             });
