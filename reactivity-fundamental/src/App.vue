@@ -48,7 +48,7 @@ export default {
   methods: {
     setProduct() {
       this.list.push(this.newProduct);
-      this.newProduct = { name: "", important: false };
+      this.newProduct = { name: "", important: false, id: new Date() };
     },
   },
 };
