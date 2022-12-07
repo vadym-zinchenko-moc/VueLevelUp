@@ -3,7 +3,7 @@
     <h1 class="best-actor__title">Best actor</h1>
     <button @click="toggleIsShowActor">Toggle show actor</button>
     <ul class="best-actor__items" v-show="isShowActor">
-      <li v-for="(value, key) in actor" :key="key" class="best-actor__item">
+      <li v-for="(value, key) of actor" :key="key" class="best-actor__item">
         {{ key }} {{ value }}
       </li>
     </ul>

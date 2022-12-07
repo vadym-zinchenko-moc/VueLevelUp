@@ -1,8 +1,11 @@
 <template>
   <div class="best-films-actors">
-    <BestFilms v-if="isShow" />
-    <BestActor v-else />
-    <button @click="toggleShow" class="toggle-button">Toggle show</button>
+    <BestFilms v-if="films" ref="films" />
+    <BestActor v-else-if="actor" ref="actor" />
+    <p v-else>Empty state</p>
+    <button @click="toggleShow('films')" class="toggle-button">Films</button>
+    <button @click="toggleShow('actor')" class="toggle-button">Actor</button>
+    <button @click="toggleShow('')" class="toggle-button">Empty state</button>
   </div>
 </template>
 
@@ -14,11 +17,21 @@ export default {
   name: "App",
   components: { BestActor, BestFilms },
   data: () => ({
-    isShow: true,
+    data: "films",
   }),
-  methods:{ 
-    toggleShow() {
-      this.isShow = !this.isShow
+  methods: {
+    toggleShow(data) {
+      this.data = data;
+      console.log("ref films", this.$refs.films);
+      console.log("ref actor", this.$refs.actor);
+    },
+  },
+  computed: {
+    films() {
+      return this.data === 'films'
+    },
+    actor() {
+      return this.data === 'actor'
     }
   }
 };

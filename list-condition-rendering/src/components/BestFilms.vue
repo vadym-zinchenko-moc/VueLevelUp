@@ -2,9 +2,11 @@
   <div class="top-films">
     <h1 class="top-films__title">Top films</h1>
     <ul v-if="filmsCount" class="top-films__items">
-      <li v-for="film in films" :key="film.id" class="top-films__item">
-        {{ film.Title }}
-      </li>
+      <tamplate v-for="film of films" :key="film.id">
+        <li v-if="film.Year > 2000" class="top-films__item">
+          {{ film.Title }}
+        </li>
+      </tamplate>
     </ul>
     <p v-else class="top-films__empty">Film list is empty</p>
   </div>
