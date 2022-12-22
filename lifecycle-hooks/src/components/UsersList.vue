@@ -41,7 +41,9 @@ export default {
   created() {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
-      .then((data) => (this.users = data));
+      .then((data) => {
+        console.log('data :>> ', data);
+        this.users = data});
   },
   beforeMount() {
     console.log("beforeMountList");
