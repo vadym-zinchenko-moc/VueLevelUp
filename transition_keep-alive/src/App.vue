@@ -7,9 +7,11 @@
     </nav>
     <section class="body">
       <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <component :is="Component" />
-        </transition>
+        <Transition name="fade" mode="out-in">
+          <KeepAlive>
+            <component :is="Component" />
+          </KeepAlive>
+        </Transition>
       </router-view>
     </section>
   </div>
@@ -37,7 +39,7 @@ export default {
   margin: 0 auto;
 }
 .body {
-  max-width: 300px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
