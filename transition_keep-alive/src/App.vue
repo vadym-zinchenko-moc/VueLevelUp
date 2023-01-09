@@ -3,7 +3,7 @@
     <nav class="nav-menu">
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
-      <router-link to="/todo">Todo list</router-link>
+      <router-link to="/users">Users</router-link>
     </nav>
     <section class="body">
       <router-view v-slot="{ Component }">

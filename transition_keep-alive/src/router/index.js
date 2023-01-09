@@ -15,7 +15,7 @@ const router = createRouter({
             component: AboutPage
         },
         {
-            path: '/todo',
+            path: '/users',
             component: UsersList
         },
     ]
