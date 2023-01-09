@@ -4,6 +4,12 @@ export default function useUsers () {
     const users = ref([]);
     const userDetails = ref(null);
 
+    const getUsers = async () => {
+      const data =  await fetch("https://jsonplaceholder.typicode.com/users")
+      const response = await data.json()
+      users.value = response 
+    }
+
     const addNewUser = (newUser) => {
       const user = { ...newUser, id: users.value.length + 1 };
       users.value.push(user);
@@ -18,5 +24,5 @@ export default function useUsers () {
       users.value = newArray
     }   
      
-    return {users, userDetails, addNewUser, getUserDetails, deleteUser}
+    return {users, userDetails, addNewUser, getUserDetails, deleteUser, getUsers}
 }

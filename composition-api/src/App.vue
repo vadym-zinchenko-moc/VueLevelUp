@@ -17,12 +17,10 @@ import useUsers from "@/composition/users";
 export default {
   components: { UsersList, UserDetails, AddUserForm },
   setup() {
-    const { users, userDetails, addNewUser, getUserDetails, deleteUser } = useUsers();
+    const { users, userDetails, addNewUser, getUserDetails, deleteUser, getUsers } = useUsers();
 
     onMounted(() => {
-      fetch("https://jsonplaceholder.typicode.com/users")
-        .then((response) => response.json())
-        .then((data) => (users.value = data));
+      getUsers()
     });
 
     return { users, userDetails, addNewUser, getUserDetails, deleteUser };
